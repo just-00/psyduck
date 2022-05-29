@@ -1,6 +1,8 @@
 export const DuckComponent = () => {
   const BODY_COLOR = "#f3d543";
   const MOUTH_COLOR = "#fbf1ae";
+  const STROKE_COLOR = "#333";
+  const STROKE_WIDTH = 2;
   const CENTER_X = 300;
   const BODY_WIDTH = 240;
   const BODY_CENTER_Y = 500;
@@ -37,11 +39,20 @@ export const DuckComponent = () => {
   const EYE_BALL_R = 4;
 
   const LENGTH_HAIR = 70;
-  const WIDTH_HAIR = 12;
-  const BORDER_RADIUS_HAIR = 6;
+  const WIDTH_HAIR = 16;
+  const BORDER_RADIUS_HAIR = 8;
   const HAIR_ROOT_Y = 150;
   const HAIR_ROTATE = 15;
-  const HAIR_DISTANCE = 17;
+  const HAIR_DISTANCE = 22;
+
+  const HAND_TOP = 230;
+  const HAND_VALLEY_DEPTH = 10;
+  const HAND_VALLEY_WIDTH = 8;
+  const WRIST_WIDTH = 20;
+  const WIRST_HEIGHT = 16;
+  const WRIST_CONTROL_X = 60;
+  const WRITST_CONTROL_Y = 520;
+  const HAND_DISTANCE = 190;
 
   return (
     <svg width={600} height={1000}>
@@ -123,6 +134,8 @@ export const DuckComponent = () => {
         } ${FEET_TOP_Y - FEET_VALLEY_DEPTH}, ${CENTER_X} ${FEET_TOP_Y}`}
         transform={`rotate(${-FEET_ROTATE}, ${CENTER_X} ${FEET_ROOT_CONTROL_Y}) translate(${FEET_DISITANCE}, 0)`}
         fill={MOUTH_COLOR}
+        stroke={STROKE_COLOR}
+        strokeWidth={STROKE_WIDTH}
       />
       <path
         d={`M ${CENTER_X} ${FEET_TOP_Y} Q ${CENTER_X + FEET_VALLEY_WIDTH} ${
@@ -136,6 +149,8 @@ export const DuckComponent = () => {
         } ${FEET_TOP_Y - FEET_VALLEY_DEPTH}, ${CENTER_X} ${FEET_TOP_Y}`}
         transform={`rotate(${FEET_ROTATE}, ${CENTER_X} ${FEET_ROOT_CONTROL_Y}) translate(${-FEET_DISITANCE}, 0)`}
         fill={MOUTH_COLOR}
+        stroke={STROKE_COLOR}
+        strokeWidth={STROKE_WIDTH}
       />
       <g transform="translate(0, 100)">
         <path
@@ -147,8 +162,18 @@ export const DuckComponent = () => {
             CENTER_X - BODY_WIDTH
           } ${BODY_CENTER_Y}`}
           fill={BODY_COLOR}
+          stroke={STROKE_COLOR}
+          strokeWidth={STROKE_WIDTH}
         />
-        <ellipse rx="200" ry="160" cx={CENTER_X} cy="200" fill={BODY_COLOR} />
+        <ellipse
+          rx="200"
+          ry="160"
+          cx={CENTER_X}
+          cy="200"
+          fill={BODY_COLOR}
+          stroke={STROKE_COLOR}
+          strokeWidth={STROKE_WIDTH}
+        />
         <path
           d={`M ${CENTER_X - MOUTH_WIDTH} ${MOUTH_CENTRE_Y} C ${
             CENTER_X - MOUTH_CONTROL_WIDTH_0
@@ -182,6 +207,8 @@ export const DuckComponent = () => {
             CENTER_X - MOUTH_CONTROL_WIDTH_1
           } ${MOUTH_CONTROL_Y_1}, ${CENTER_X - MOUTH_WIDTH} ${MOUTH_CENTRE_Y}`}
           fill={MOUTH_COLOR}
+          stroke={STROKE_COLOR}
+          strokeWidth={STROKE_WIDTH}
         />
         <ellipse
           cx={CENTER_X - EYE_CLOEST_WIDTH - EYE_RX}
@@ -189,6 +216,8 @@ export const DuckComponent = () => {
           rx={EYE_RX}
           ry={EYE_RY}
           fill="#fff"
+          stroke={STROKE_COLOR}
+          strokeWidth={STROKE_WIDTH}
         />
         <ellipse
           cx={CENTER_X + EYE_CLOEST_WIDTH + EYE_RX}
@@ -196,6 +225,8 @@ export const DuckComponent = () => {
           rx={EYE_RX}
           ry={EYE_RY}
           fill="#fff"
+          stroke={STROKE_COLOR}
+          strokeWidth={STROKE_WIDTH}
         />
         <circle
           cx={CENTER_X - EYE_CLOEST_WIDTH - EYE_RX}
@@ -210,7 +241,45 @@ export const DuckComponent = () => {
           fill="#000"
         />
       </g>
-      
+
+      <path
+        d={`M ${CENTER_X} ${HAND_TOP} L ${CENTER_X + HAND_VALLEY_WIDTH} ${
+          HAND_TOP + HAND_VALLEY_DEPTH
+        } L ${CENTER_X + 3 * HAND_VALLEY_WIDTH} ${
+          HAND_TOP + HAND_VALLEY_DEPTH
+        } L ${CENTER_X + WRIST_WIDTH} ${
+          HAND_TOP + HAND_VALLEY_DEPTH + WIRST_HEIGHT
+        } C ${CENTER_X + WRIST_WIDTH + WRIST_CONTROL_X} ${WRITST_CONTROL_Y}, ${
+          CENTER_X - WRIST_WIDTH - WRIST_CONTROL_X
+        } ${WRITST_CONTROL_Y}, ${CENTER_X - WRIST_WIDTH} ${
+          HAND_TOP + HAND_VALLEY_DEPTH + WIRST_HEIGHT
+        } L ${CENTER_X - 3 * HAND_VALLEY_WIDTH} ${
+          HAND_TOP + HAND_VALLEY_DEPTH
+        } L ${CENTER_X - HAND_VALLEY_WIDTH} ${HAND_TOP + HAND_VALLEY_DEPTH} Z`}
+        fill={BODY_COLOR}
+        stroke={STROKE_COLOR}
+        strokeWidth={STROKE_WIDTH}
+        transform={`translate(${HAND_DISTANCE},0)`}
+      />
+      <path
+        d={`M ${CENTER_X} ${HAND_TOP} L ${CENTER_X + HAND_VALLEY_WIDTH} ${
+          HAND_TOP + HAND_VALLEY_DEPTH
+        } L ${CENTER_X + 3 * HAND_VALLEY_WIDTH} ${
+          HAND_TOP + HAND_VALLEY_DEPTH
+        } L ${CENTER_X + WRIST_WIDTH} ${
+          HAND_TOP + HAND_VALLEY_DEPTH + WIRST_HEIGHT
+        } C ${CENTER_X + WRIST_WIDTH + WRIST_CONTROL_X} ${WRITST_CONTROL_Y}, ${
+          CENTER_X - WRIST_WIDTH - WRIST_CONTROL_X
+        } ${WRITST_CONTROL_Y}, ${CENTER_X - WRIST_WIDTH} ${
+          HAND_TOP + HAND_VALLEY_DEPTH + WIRST_HEIGHT
+        } L ${CENTER_X - 3 * HAND_VALLEY_WIDTH} ${
+          HAND_TOP + HAND_VALLEY_DEPTH
+        } L ${CENTER_X - HAND_VALLEY_WIDTH} ${HAND_TOP + HAND_VALLEY_DEPTH} Z`}
+        fill={BODY_COLOR}
+        stroke={STROKE_COLOR}
+        strokeWidth={STROKE_WIDTH}
+        transform={`translate(-${HAND_DISTANCE},0)`}
+      />
     </svg>
   );
 };
