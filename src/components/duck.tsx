@@ -1,9 +1,12 @@
+import cn from "classnames";
+import styles from "./duck.module.css";
+
 export const DuckComponent = () => {
   const BODY_COLOR = "#f3d543";
   const MOUTH_COLOR = "#fbf1ae";
   const STROKE_COLOR = "#333";
   const STROKE_WIDTH = 2;
-  const CENTER_X = 300;
+  const CENTER_X = 500;
   const BODY_WIDTH = 240;
   const BODY_CENTER_Y = 500;
   const MOUTH_WIDTH = 140;
@@ -46,16 +49,17 @@ export const DuckComponent = () => {
   const HAIR_DISTANCE = 22;
 
   const HAND_TOP = 230;
-  const HAND_VALLEY_DEPTH = 10;
-  const HAND_VALLEY_WIDTH = 8;
-  const WRIST_WIDTH = 20;
-  const WIRST_HEIGHT = 16;
-  const WRIST_CONTROL_X = 60;
-  const WRITST_CONTROL_Y = 520;
-  const HAND_DISTANCE = 190;
+  const HAND_VALLEY_DEPTH = 24;
+  const HAND_VALLEY_WIDTH = 16;
+  const WRIST_WIDTH = 30;
+  const WIRST_HEIGHT = 32;
+  const WRIST_CONTROL_X = 140;
+  const WRITST_CONTROL_Y = 600;
+  const HAND_DISTANCE = 200;
+  const HAND_ROTATE_Y = 470;
 
   return (
-    <svg width={600} height={1000}>
+    <svg width={1000} height={1000}>
       <path
         d={`M${
           CENTER_X - WIDTH_HAIR / 2 + BORDER_RADIUS_HAIR
@@ -241,45 +245,62 @@ export const DuckComponent = () => {
           fill="#000"
         />
       </g>
-
-      <path
-        d={`M ${CENTER_X} ${HAND_TOP} L ${CENTER_X + HAND_VALLEY_WIDTH} ${
-          HAND_TOP + HAND_VALLEY_DEPTH
-        } L ${CENTER_X + 3 * HAND_VALLEY_WIDTH} ${
-          HAND_TOP + HAND_VALLEY_DEPTH
-        } L ${CENTER_X + WRIST_WIDTH} ${
-          HAND_TOP + HAND_VALLEY_DEPTH + WIRST_HEIGHT
-        } C ${CENTER_X + WRIST_WIDTH + WRIST_CONTROL_X} ${WRITST_CONTROL_Y}, ${
-          CENTER_X - WRIST_WIDTH - WRIST_CONTROL_X
-        } ${WRITST_CONTROL_Y}, ${CENTER_X - WRIST_WIDTH} ${
-          HAND_TOP + HAND_VALLEY_DEPTH + WIRST_HEIGHT
-        } L ${CENTER_X - 3 * HAND_VALLEY_WIDTH} ${
-          HAND_TOP + HAND_VALLEY_DEPTH
-        } L ${CENTER_X - HAND_VALLEY_WIDTH} ${HAND_TOP + HAND_VALLEY_DEPTH} Z`}
-        fill={BODY_COLOR}
-        stroke={STROKE_COLOR}
-        strokeWidth={STROKE_WIDTH}
-        transform={`translate(${HAND_DISTANCE},0)`}
-      />
-      <path
-        d={`M ${CENTER_X} ${HAND_TOP} L ${CENTER_X + HAND_VALLEY_WIDTH} ${
-          HAND_TOP + HAND_VALLEY_DEPTH
-        } L ${CENTER_X + 3 * HAND_VALLEY_WIDTH} ${
-          HAND_TOP + HAND_VALLEY_DEPTH
-        } L ${CENTER_X + WRIST_WIDTH} ${
-          HAND_TOP + HAND_VALLEY_DEPTH + WIRST_HEIGHT
-        } C ${CENTER_X + WRIST_WIDTH + WRIST_CONTROL_X} ${WRITST_CONTROL_Y}, ${
-          CENTER_X - WRIST_WIDTH - WRIST_CONTROL_X
-        } ${WRITST_CONTROL_Y}, ${CENTER_X - WRIST_WIDTH} ${
-          HAND_TOP + HAND_VALLEY_DEPTH + WIRST_HEIGHT
-        } L ${CENTER_X - 3 * HAND_VALLEY_WIDTH} ${
-          HAND_TOP + HAND_VALLEY_DEPTH
-        } L ${CENTER_X - HAND_VALLEY_WIDTH} ${HAND_TOP + HAND_VALLEY_DEPTH} Z`}
-        fill={BODY_COLOR}
-        stroke={STROKE_COLOR}
-        strokeWidth={STROKE_WIDTH}
-        transform={`translate(-${HAND_DISTANCE},0)`}
-      />
+      <g transform={`translate(${HAND_DISTANCE},0)`}>
+        <path
+          className={styles.hand}
+          d={`M ${CENTER_X} ${HAND_TOP} L ${CENTER_X + HAND_VALLEY_WIDTH} ${
+            HAND_TOP + HAND_VALLEY_DEPTH
+          } L ${CENTER_X + 3 * HAND_VALLEY_WIDTH} ${
+            HAND_TOP + HAND_VALLEY_DEPTH
+          } L ${CENTER_X + WRIST_WIDTH} ${
+            HAND_TOP + HAND_VALLEY_DEPTH + WIRST_HEIGHT
+          } C ${
+            CENTER_X + WRIST_WIDTH + WRIST_CONTROL_X
+          } ${WRITST_CONTROL_Y}, ${
+            CENTER_X - WRIST_WIDTH - WRIST_CONTROL_X
+          } ${WRITST_CONTROL_Y}, ${CENTER_X - WRIST_WIDTH} ${
+            HAND_TOP + HAND_VALLEY_DEPTH + WIRST_HEIGHT
+          } L ${CENTER_X - 3 * HAND_VALLEY_WIDTH} ${
+            HAND_TOP + HAND_VALLEY_DEPTH
+          } L ${CENTER_X - HAND_VALLEY_WIDTH} ${
+            HAND_TOP + HAND_VALLEY_DEPTH
+          } Z`}
+          fill={BODY_COLOR}
+          stroke={STROKE_COLOR}
+          strokeWidth={STROKE_WIDTH}
+          style={{
+            transformOrigin: `${CENTER_X}px ${HAND_ROTATE_Y}px`,
+          }}
+        />
+      </g>
+      <g transform={`translate(-${HAND_DISTANCE},0)`}>
+        <path
+          className={cn(styles.hand, styles.left)}
+          d={`M ${CENTER_X} ${HAND_TOP} L ${CENTER_X + HAND_VALLEY_WIDTH} ${
+            HAND_TOP + HAND_VALLEY_DEPTH
+          } L ${CENTER_X + 3 * HAND_VALLEY_WIDTH} ${
+            HAND_TOP + HAND_VALLEY_DEPTH
+          } L ${CENTER_X + WRIST_WIDTH} ${
+            HAND_TOP + HAND_VALLEY_DEPTH + WIRST_HEIGHT
+          } C ${
+            CENTER_X + WRIST_WIDTH + WRIST_CONTROL_X
+          } ${WRITST_CONTROL_Y}, ${
+            CENTER_X - WRIST_WIDTH - WRIST_CONTROL_X
+          } ${WRITST_CONTROL_Y}, ${CENTER_X - WRIST_WIDTH} ${
+            HAND_TOP + HAND_VALLEY_DEPTH + WIRST_HEIGHT
+          } L ${CENTER_X - 3 * HAND_VALLEY_WIDTH} ${
+            HAND_TOP + HAND_VALLEY_DEPTH
+          } L ${CENTER_X - HAND_VALLEY_WIDTH} ${
+            HAND_TOP + HAND_VALLEY_DEPTH
+          } Z`}
+          fill={BODY_COLOR}
+          stroke={STROKE_COLOR}
+          strokeWidth={STROKE_WIDTH}
+          style={{
+            transformOrigin: `${CENTER_X}px ${HAND_ROTATE_Y}px`,
+          }}
+        />
+      </g>
     </svg>
   );
 };
