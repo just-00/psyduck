@@ -1,5 +1,6 @@
 export const DuckComponent = () => {
   const BODY_COLOR = "#f3d543";
+  const MOUTH_COLOR = "#fbf1ae";
   const CENTER_X = 300;
   const BODY_WIDTH = 240;
   const BODY_CENTER_Y = 500;
@@ -20,6 +21,14 @@ export const DuckComponent = () => {
   const MOUTH_POINT_WIDTH_3 = 15;
   const MOUTH_POINT_Y_3 = 192;
   const MOUTH_CONTROL_Y_4 = 180;
+
+  const FEET_TOP_Y = 860;
+  const FEET_VALLEY_DEPTH = 30;
+  const FEET_VALLEY_WIDTH = 40;
+  const FEET_VALLEY_SIDE_TOP = 20;
+  const FEET_ROOT_CONTROL_Y = 560;
+  const FEET_ROTATE = 20;
+  const FEET_DISITANCE = 40;
 
   const EYE_RX = 45;
   const EYE_RY = 35;
@@ -102,6 +111,32 @@ export const DuckComponent = () => {
           HAIR_ROOT_Y - LENGTH_HAIR / 2
         }) translate(${HAIR_DISTANCE},0)`}
       />
+      <path
+        d={`M ${CENTER_X} ${FEET_TOP_Y} Q ${CENTER_X + FEET_VALLEY_WIDTH} ${
+          FEET_TOP_Y - FEET_VALLEY_DEPTH
+        }, ${CENTER_X + 2 * FEET_VALLEY_WIDTH} ${
+          FEET_TOP_Y - FEET_VALLEY_DEPTH + FEET_VALLEY_SIDE_TOP
+        } Q ${CENTER_X} ${FEET_ROOT_CONTROL_Y}, ${
+          CENTER_X - 2 * FEET_VALLEY_WIDTH
+        } ${FEET_TOP_Y - FEET_VALLEY_DEPTH + FEET_VALLEY_SIDE_TOP} Q ${
+          CENTER_X - FEET_VALLEY_DEPTH
+        } ${FEET_TOP_Y - FEET_VALLEY_DEPTH}, ${CENTER_X} ${FEET_TOP_Y}`}
+        transform={`rotate(${-FEET_ROTATE}, ${CENTER_X} ${FEET_ROOT_CONTROL_Y}) translate(${FEET_DISITANCE}, 0)`}
+        fill={MOUTH_COLOR}
+      />
+      <path
+        d={`M ${CENTER_X} ${FEET_TOP_Y} Q ${CENTER_X + FEET_VALLEY_WIDTH} ${
+          FEET_TOP_Y - FEET_VALLEY_DEPTH
+        }, ${CENTER_X + 2 * FEET_VALLEY_WIDTH} ${
+          FEET_TOP_Y - FEET_VALLEY_DEPTH + FEET_VALLEY_SIDE_TOP
+        } Q ${CENTER_X} ${FEET_ROOT_CONTROL_Y}, ${
+          CENTER_X - 2 * FEET_VALLEY_WIDTH
+        } ${FEET_TOP_Y - FEET_VALLEY_DEPTH + FEET_VALLEY_SIDE_TOP} Q ${
+          CENTER_X - FEET_VALLEY_DEPTH
+        } ${FEET_TOP_Y - FEET_VALLEY_DEPTH}, ${CENTER_X} ${FEET_TOP_Y}`}
+        transform={`rotate(${FEET_ROTATE}, ${CENTER_X} ${FEET_ROOT_CONTROL_Y}) translate(${-FEET_DISITANCE}, 0)`}
+        fill={MOUTH_COLOR}
+      />
       <g transform="translate(0, 100)">
         <path
           d={`M ${
@@ -146,7 +181,7 @@ export const DuckComponent = () => {
           } ${MOUTH_POINT_Y_1} Q ${
             CENTER_X - MOUTH_CONTROL_WIDTH_1
           } ${MOUTH_CONTROL_Y_1}, ${CENTER_X - MOUTH_WIDTH} ${MOUTH_CENTRE_Y}`}
-          fill="#fbf1ae"
+          fill={MOUTH_COLOR}
         />
         <ellipse
           cx={CENTER_X - EYE_CLOEST_WIDTH - EYE_RX}
@@ -175,6 +210,7 @@ export const DuckComponent = () => {
           fill="#000"
         />
       </g>
+      
     </svg>
   );
 };
