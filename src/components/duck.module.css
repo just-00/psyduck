@@ -35,3 +35,6 @@
 .hand.left {
   animation-name: duckHandLeft;
 }
+.boardText {
+  font: 50px sans-serif;
+}

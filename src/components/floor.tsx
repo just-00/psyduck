@@ -3,8 +3,9 @@ import { FlowerComponent } from "./flower";
 import { RadioComponent } from "./radio";
 import { forwardRef } from "react";
 
-export const FloorComponent = forwardRef<SVGSVGElement, { rotateDeg?: number }>(
-  ({ rotateDeg }, ref) => {
+export const FloorComponent = forwardRef<SVGSVGElement, 
+  { rotateDeg?: number, leftBoardText: string, rightBoardText: string }>(
+  ({ rotateDeg, leftBoardText, rightBoardText }, ref) => {
     const OUT_FLOOR_COLOR = "#bcedb1";
     const OUT_FLOOR_WIDTH = 230;
     const OUT_FLOOR_HEIGHT = 55;
@@ -67,7 +68,9 @@ export const FloorComponent = forwardRef<SVGSVGElement, { rotateDeg?: number }>(
           <RadioComponent transform="translate(280, -40) scale(0.8)" />
         </g>
         <g transform="scale(0.3) translate(50, 20)">
-          <DuckComponent rotateDeg={rotateDeg} />
+          <DuckComponent rotateDeg={rotateDeg}
+            leftBoardText={leftBoardText}
+            rightBoardText={rightBoardText}/>
         </g>
       </svg>
     );

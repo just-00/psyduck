@@ -1,7 +1,8 @@
 import cn from "classnames";
 import styles from "./duck.module.css";
 
-export const DuckComponent = ({ rotateDeg }: { rotateDeg?: number }) => {
+export const DuckComponent = ({ rotateDeg ,leftBoardText, rightBoardText }:
+     { rotateDeg?: number, leftBoardText:string, rightBoardText:string }) => {
   const BODY_COLOR = "#f3d543";
   const MOUTH_COLOR = "#fbf1ae";
   const STROKE_COLOR = "#333";
@@ -58,8 +59,15 @@ export const DuckComponent = ({ rotateDeg }: { rotateDeg?: number }) => {
   const HAND_DISTANCE = 200;
   const HAND_ROTATE_Y = 470;
 
+  const LEFT_BOARD_TEXT = leftBoardText
+  const RIGHT_BOARD_TEXT = rightBoardText
+
+  const MESSAGE_BOARD_WIDTH = 300
+  const MESSAGE_BOARD_HEIGHT = 150
+  const MESSAGE_BOARD_COLOR = '#fff'
+
   return (
-    <svg width={1000} height={1000}>
+    <svg width={1400} height={1200}>
       <path
         d={`M${
           CENTER_X - WIDTH_HAIR / 2 + BORDER_RADIUS_HAIR
@@ -245,6 +253,7 @@ export const DuckComponent = ({ rotateDeg }: { rotateDeg?: number }) => {
           fill="#000"
         />
       </g>
+      {/* 右手 */}
       <g transform={`translate(${HAND_DISTANCE},0)`}>
         <path
           className={styles.hand}
@@ -275,7 +284,24 @@ export const DuckComponent = ({ rotateDeg }: { rotateDeg?: number }) => {
               rotateDeg === undefined ? undefined : `rotate(${rotateDeg}deg)`,
           }}
         />
+        <rect
+          width={MESSAGE_BOARD_WIDTH}
+          height={MESSAGE_BOARD_HEIGHT}
+          x={CENTER_X - 10}
+          y={HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.6}
+          fill={MESSAGE_BOARD_COLOR}
+          className={styles.hand}
+          transform-origin={`${CENTER_X} ${HAND_ROTATE_Y}`}
+        />
+        <text
+          className={cn(styles.boardText,styles.hand)}
+          x={CENTER_X}
+          y={ HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.04}
+          transform-origin={`${CENTER_X} ${HAND_ROTATE_Y}`}
+          >{RIGHT_BOARD_TEXT}</text>
       </g>
+
+      {/* 左手 */}
       <g transform={`translate(-${HAND_DISTANCE},0)`}>
         <path
           className={cn(styles.hand, styles.left)}
@@ -306,6 +332,21 @@ export const DuckComponent = ({ rotateDeg }: { rotateDeg?: number }) => {
               rotateDeg === undefined ? undefined : `rotate(-${rotateDeg}deg)`,
           }}
         />
+        <rect
+          width={MESSAGE_BOARD_WIDTH}
+          height={MESSAGE_BOARD_HEIGHT}
+          x={CENTER_X - 10 - MESSAGE_BOARD_WIDTH}
+          y={HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.6}
+          fill={MESSAGE_BOARD_COLOR}
+          className={cn(styles.hand,styles.left)}
+          transform-origin={`${CENTER_X} ${HAND_ROTATE_Y}`}
+        />
+        <text
+          className={cn(styles.boardText,styles.hand,styles.left)}
+          x={CENTER_X - MESSAGE_BOARD_WIDTH + 10}
+          y={ HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.04}
+          transform-origin={`${CENTER_X} ${HAND_ROTATE_Y}`}
+          >{LEFT_BOARD_TEXT}</text>
       </g>
     </svg>
   );
