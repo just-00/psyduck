@@ -3,26 +3,33 @@ export const RadioComponent = () => {
     // 主体
     const WIDTH = 100
     const TOP_BOTTOM_HEIGHT = 28
-    const MIDDLE_HEIGHT = 14
+    const MIDDLE_HEIGHT = 16
     const RECT_RADIUS = 12
     const TOTAL_HEIGHT = TOP_BOTTOM_HEIGHT * 2 + MIDDLE_HEIGHT
 
     // 按钮
-    const BUTTON_WIDTH = 8
-    const BUTTON_HEIGHT = 4
+    const BUTTON_WIDTH = 12
+    const BUTTON_HEIGHT = 3
+    const BUTTON_LEFT = 28
 
     // 当中的圈
     const CIRCLE_RADIUS = 22
     const CIRCLE_STROKE_WIDTH = 7
+    const CIRCLE_COLOR = '#fff'
+
+    // 圈上的线
+    const LINE_SPLIT = 2
+
 
     // 天线
-    const ANTENNA_X = 6
-    const ANTENNA_Y = 24
-    const ANTENNA_WIDTH_TOP = 6
-    const ANTENNA_WIDTH_BOTTOM = 6
+    const ANTENNA_X = 10
+    const ANTENNA_Y = 38
+    const ANTENNA_WIDTH = 10
+    const ANTENNA_LEFT = RECT_RADIUS - 3
+
 
     return (
-        <svg
+         <svg
         //  width={WIDTH}
         //  height={TOP_BOTTOM_HEIGHT * 2 + MIDDLE_HEIGHT}
         //  style={{
@@ -31,11 +38,12 @@ export const RadioComponent = () => {
         >
             {/* 主体 */}
             <g transform={`
-                translate(0 ${ANTENNA_Y + ANTENNA_WIDTH_TOP / 2})
+                translate(0 ${ANTENNA_Y + ANTENNA_WIDTH / 2})
             `}
             >
             <path
-                fill="red"
+                fill="#b12623"
+                stroke="#666"
                  d={`M 0 ${TOP_BOTTOM_HEIGHT} 
                     V ${RECT_RADIUS} 
                     Q 0 0, ${RECT_RADIUS} 0 
@@ -47,7 +55,8 @@ export const RadioComponent = () => {
                 fill: 'black',
             }} />
               <path
-                fill="white"
+                fill="#eee"
+                stroke="#666"
                  d={`M 0 ${TOP_BOTTOM_HEIGHT + MIDDLE_HEIGHT}
                   V ${TOTAL_HEIGHT- RECT_RADIUS} 
                   Q 0 ${TOTAL_HEIGHT}, ${RECT_RADIUS} ${TOTAL_HEIGHT}
@@ -57,13 +66,13 @@ export const RadioComponent = () => {
                   H 0 Z`} />
 
             {/* 按钮1 */}
-            <rect x="28" y={`-${BUTTON_HEIGHT}`} width={BUTTON_WIDTH} height={BUTTON_HEIGHT} style={{
-                fill: 'red',
+            <rect x={BUTTON_LEFT} y={`-${BUTTON_HEIGHT}`} width={BUTTON_WIDTH} height={BUTTON_HEIGHT} style={{
+                fill: '#b12623',
             }} />
 
             {/* 按钮2 */}
-            <rect x="40" y={`-${BUTTON_HEIGHT}`} width={BUTTON_WIDTH} height={BUTTON_HEIGHT} style={{
-                fill: 'red',
+            <rect x={BUTTON_LEFT + BUTTON_WIDTH + 4} y={`-${BUTTON_HEIGHT}`} width={BUTTON_WIDTH} height={BUTTON_HEIGHT} style={{
+                fill: '#b12623',
             }} />
             
             
@@ -74,16 +83,16 @@ export const RadioComponent = () => {
              r={CIRCLE_RADIUS}
               stroke="black" 
               stroke-width={CIRCLE_STROKE_WIDTH}
-              fill="white" />
-
+              fill={CIRCLE_COLOR} />
+        
             </g>
            
             {/* 天线 */}
             <path d={`
-                M ${RECT_RADIUS - 3} ${ANTENNA_Y + ANTENNA_WIDTH_TOP / 2}
-                H ${RECT_RADIUS + ANTENNA_WIDTH_BOTTOM}
-                L ${RECT_RADIUS + ANTENNA_X + ANTENNA_WIDTH_TOP} ${ANTENNA_WIDTH_TOP / 2}
-                Q ${RECT_RADIUS + ANTENNA_X + ANTENNA_WIDTH_TOP / 2} 0, ${RECT_RADIUS + ANTENNA_X} ${ANTENNA_WIDTH_TOP / 2}
+                M ${ANTENNA_LEFT} ${ANTENNA_Y + ANTENNA_WIDTH / 2}
+                H ${ANTENNA_LEFT + ANTENNA_WIDTH}
+                L ${ANTENNA_LEFT + ANTENNA_X + ANTENNA_WIDTH} ${ANTENNA_WIDTH / 2}
+                Q ${ANTENNA_LEFT + ANTENNA_X + ANTENNA_WIDTH / 2} 0, ${ANTENNA_LEFT + ANTENNA_X} ${ANTENNA_WIDTH / 2}
                 Z
             `}/>
         </svg>

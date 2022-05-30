@@ -1,23 +1,35 @@
 @keyframes duckHandRight {
-  from {
+  0% {
     transform: rotate(0);
   }
-  to {
+  30% {
+    transform: rotate(0);
+  }
+  70% {
+    transform: rotate(150deg);
+  }
+  100% {
     transform: rotate(150deg);
   }
 }
 
 @keyframes duckHandLeft {
-  from {
+  0% {
     transform: rotate(-150deg);
   }
-  to {
+  30% {
+    transform: rotate(-150deg);
+  }
+  70% {
+    transform: rotate(0);
+  }
+  100% {
     transform: rotate(0);
   }
 }
 
 .hand {
-  animation: 2s linear 2s infinite alternate duckHandRight;
+  animation: 2s ease 0s infinite alternate duckHandRight;
 }
 
 .hand.left {
