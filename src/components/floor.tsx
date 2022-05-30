@@ -38,8 +38,8 @@ export const FloorComponent = forwardRef<SVGSVGElement,
     ];
 
     return (
-      <svg width={460} height={400} ref={ref}>
-        <g transform="translate(0, 200)">
+      <svg width={500} height={400} ref={ref}>
+        <g transform="translate(60, 200)">
           <ellipse
             style={{
               transform: `translateY(${
@@ -67,7 +67,7 @@ export const FloorComponent = forwardRef<SVGSVGElement,
           ))}
           <RadioComponent transform="translate(280, -40) scale(0.8)" />
         </g>
-        <g transform="scale(0.3) translate(50, 20)">
+        <g transform="scale(0.3) translate(150, 20)">
           <DuckComponent rotateDeg={rotateDeg}
             leftBoardText={leftBoardText}
             rightBoardText={rightBoardText}/>

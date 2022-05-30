@@ -34,7 +34,7 @@ export const RadioComponent = ({ transform }: { transform?: string }) => {
             `}
       >
         <path
-          fill="#b12623"
+          fill="#d12623"
           stroke="#666"
           d={`M 0 ${TOP_BOTTOM_HEIGHT} 
                     V ${RECT_RADIUS} 

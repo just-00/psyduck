@@ -7,7 +7,7 @@ export const DuckComponent = ({ rotateDeg ,leftBoardText, rightBoardText }:
   const MOUTH_COLOR = "#fbf1ae";
   const STROKE_COLOR = "#333";
   const STROKE_WIDTH = 2;
-  const CENTER_X = 500;
+  const CENTER_X = 650;
   const BODY_WIDTH = 240;
   const BODY_CENTER_Y = 500;
   const MOUTH_WIDTH = 140;
@@ -65,6 +65,7 @@ export const DuckComponent = ({ rotateDeg ,leftBoardText, rightBoardText }:
   const MESSAGE_BOARD_WIDTH = 300
   const MESSAGE_BOARD_HEIGHT = 150
   const MESSAGE_BOARD_COLOR = '#fff'
+  const MESSAGE_BOARD_STROKE_COLOR = '#333'
 
   return (
     <svg width={1400} height={1200}>
@@ -288,6 +289,7 @@ export const DuckComponent = ({ rotateDeg ,leftBoardText, rightBoardText }:
           width={MESSAGE_BOARD_WIDTH}
           height={MESSAGE_BOARD_HEIGHT}
           x={CENTER_X - 10}
+          stroke={MESSAGE_BOARD_STROKE_COLOR}
           y={HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.6}
           fill={MESSAGE_BOARD_COLOR}
           className={styles.hand}
@@ -338,6 +340,7 @@ export const DuckComponent = ({ rotateDeg ,leftBoardText, rightBoardText }:
           x={CENTER_X - 10 - MESSAGE_BOARD_WIDTH}
           y={HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.6}
           fill={MESSAGE_BOARD_COLOR}
+          stroke={MESSAGE_BOARD_STROKE_COLOR}
           className={cn(styles.hand,styles.left)}
           transform-origin={`${CENTER_X} ${HAND_ROTATE_Y}`}
         />

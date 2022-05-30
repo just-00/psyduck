@@ -20,21 +20,23 @@ function App() {
   }, [rotateDeg, exporting]);
 
   return (
-    <>
-      <section style={{margin: '10px'}}>
-        <TextField label="左手" variant="outlined" onChange={(e)=>{
-          setLeftBoardText(e.target.value)
-        }} />
-        <TextField label="右手" variant="outlined" onChange={(e)=>{
-          setRightBoardText(e.target.value)
-        }} />
+    <section className="center">
+      <section>
+        <section style={{margin: '10px'}}>
+          <TextField label="左手" variant="outlined" onChange={(e)=>{
+            setLeftBoardText(e.target.value)
+          }} />
+          <TextField label="右手" variant="outlined" onChange={(e)=>{
+            setRightBoardText(e.target.value)
+          }} />
+        </section>
+        <FloorComponent leftBoardText={leftBoardText} rightBoardText={rightBoardText} />
+        <div style={{ display: "none" }}>
+          <FloorComponent rotateDeg={rotateDeg} ref={svgRef}/>
+          <canvas ref={canvasRef} width={460} height={400} />
+        </div>
       </section>
-      <FloorComponent leftBoardText={leftBoardText} rightBoardText={rightBoardText} />
-      <div style={{ display: "none" }}>
-        <FloorComponent rotateDeg={rotateDeg} ref={svgRef}/>
-        <canvas ref={canvasRef} width={460} height={400} />
-      </div>
-    </>
+    </section>
   );
 }
 
