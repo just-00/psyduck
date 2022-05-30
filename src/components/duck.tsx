@@ -1,7 +1,7 @@
 import cn from "classnames";
 import styles from "./duck.module.css";
 
-export const DuckComponent = () => {
+export const DuckComponent = ({ rotateDeg }: { rotateDeg?: number }) => {
   const BODY_COLOR = "#f3d543";
   const MOUTH_COLOR = "#fbf1ae";
   const STROKE_COLOR = "#333";
@@ -268,8 +268,11 @@ export const DuckComponent = () => {
           fill={BODY_COLOR}
           stroke={STROKE_COLOR}
           strokeWidth={STROKE_WIDTH}
+          transform-origin={`${CENTER_X} ${HAND_ROTATE_Y}`}
           style={{
-            transformOrigin: `${CENTER_X}px ${HAND_ROTATE_Y}px`,
+            animationName: rotateDeg === undefined ? undefined : "none",
+            transform:
+              rotateDeg === undefined ? undefined : `rotate(${rotateDeg}deg)`,
           }}
         />
       </g>
@@ -296,8 +299,11 @@ export const DuckComponent = () => {
           fill={BODY_COLOR}
           stroke={STROKE_COLOR}
           strokeWidth={STROKE_WIDTH}
+          transform-origin={`${CENTER_X} ${HAND_ROTATE_Y}`}
           style={{
-            transformOrigin: `${CENTER_X}px ${HAND_ROTATE_Y}px`,
+            animationName: rotateDeg === undefined ? undefined : "none",
+            transform:
+              rotateDeg === undefined ? undefined : `rotate(-${rotateDeg}deg)`,
           }}
         />
       </g>
