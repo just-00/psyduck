@@ -38,7 +38,7 @@ export const FloorComponent = forwardRef<SVGSVGElement,
     ];
 
     return (
-      <svg width={500} height={400} ref={ref}>
+      <svg width={530} height={400} ref={ref}>
         <g transform="translate(60, 200)">
           <ellipse
             style={{
