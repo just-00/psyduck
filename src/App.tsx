@@ -11,6 +11,19 @@ const MAX_ROTATE_DEG = 150;
 const BIG_DELAY = 2000 * 0.35;
 const DELAY_STEP = (2000 * 0.3) / (150 / STEP);
 
+const downloadFileByBlob = (blob: Blob) => {
+  let blobUrl = window.URL.createObjectURL(blob);
+  let link = document.createElement("a");
+  link.download = "cute-psyduck.gif";
+  link.style.display = "none";
+  link.href = blobUrl;
+  // 触发点击
+  document.body.appendChild(link);
+  link.click();
+  // 移除
+  document.body.removeChild(link);
+};
+
 function App() {
   const [leftBoardText, setLeftBoardText] = useState("");
   const [rightBoardText, setRightBoardText] = useState("");
@@ -26,13 +39,15 @@ function App() {
     if (!exporting || !svgRef.current) {
       return;
     }
-    toCanvas(svgRef.current as unknown as HTMLElement).then((canvas) => {
+    toCanvas(svgRef.current as unknown as HTMLElement, {
+      backgroundColor: "#fff",
+    }).then((canvas) => {
       canvasList.push(canvas);
       // 当到最后一个帧时，开始导出gif
       if (rotateDeg === MAX_ROTATE_DEG) {
         const gif = new GIF({
-          width: 460,
-          height: 400,
+          width: 1100,
+          height: 650,
           workerScript: gifWorkerUrl,
         });
 
@@ -56,7 +71,9 @@ function App() {
           setExporting(false);
           setCanvasList([]);
           setRotateDeg(0);
-          window.open(URL.createObjectURL(blob));
+          // 下载生成好的gif
+          downloadFileByBlob(blob);
+          // window.open(URL.createObjectURL(blob));
         });
         gif.render();
       } else {
@@ -68,6 +85,17 @@ function App() {
   return (
     <section className="center">
       <section>
+        <div className="title-wrapper">
+          <div className="title">来定义属于你自己的表情包吧！🌈</div>
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={() => setExporting(true)}
+            disabled={exporting}
+          >
+            生成GIF
+          </Button>
+        </div>
         <section className="action-wrapper">
           <TextField
             label="左手"
@@ -76,6 +104,7 @@ function App() {
               setLeftBoardText(e.target.value);
             }}
           />
+          <div className="and">and</div>
           <TextField
             label="右手"
             variant="outlined"
@@ -88,13 +117,6 @@ function App() {
           leftBoardText={leftBoardText}
           rightBoardText={rightBoardText}
         />
-        <Button
-          color="primary"
-          onClick={() => setExporting(true)}
-          disabled={exporting}
-        >
-          生成GIF
-        </Button>
         <div
           style={{
             position: "absolute",

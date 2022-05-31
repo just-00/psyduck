@@ -69,10 +69,10 @@ export const DuckComponent = ({
   const LEFT_BOARD_TEXT = leftBoardText;
   const RIGHT_BOARD_TEXT = rightBoardText;
 
-  const MESSAGE_BOARD_WIDTH = 300
-  const MESSAGE_BOARD_HEIGHT = 150
-  const MESSAGE_BOARD_COLOR = '#fff'
-  const MESSAGE_BOARD_STROKE_COLOR = '#333'
+  const MESSAGE_BOARD_WIDTH = 300;
+  const MESSAGE_BOARD_HEIGHT = 150;
+  const MESSAGE_BOARD_COLOR = "#fff";
+  const MESSAGE_BOARD_STROKE_COLOR = "#333";
 
   return (
     <svg width={1400} height={1200}>
@@ -301,12 +301,22 @@ export const DuckComponent = ({
           fill={MESSAGE_BOARD_COLOR}
           className={styles.hand}
           transform-origin={`${CENTER_X} ${HAND_ROTATE_Y}`}
+          style={{
+            animationName: rotateDeg === undefined ? undefined : "none",
+            transform:
+              rotateDeg === undefined ? undefined : `rotate(${rotateDeg}deg)`,
+          }}
         />
         <text
           className={cn(styles.boardText, styles.hand)}
           x={CENTER_X}
           y={HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.04}
           transform-origin={`${CENTER_X} ${HAND_ROTATE_Y}`}
+          style={{
+            animationName: rotateDeg === undefined ? undefined : "none",
+            transform:
+              rotateDeg === undefined ? undefined : `rotate(${rotateDeg}deg)`,
+          }}
         >
           {RIGHT_BOARD_TEXT}
         </text>
@@ -354,12 +364,26 @@ export const DuckComponent = ({
           stroke={MESSAGE_BOARD_STROKE_COLOR}
           className={cn(styles.hand, styles.left)}
           transform-origin={`${CENTER_X} ${HAND_ROTATE_Y}`}
+          style={{
+            animationName: rotateDeg === undefined ? undefined : "none",
+            transform:
+              rotateDeg === undefined
+                ? undefined
+                : `rotate(-${150 - rotateDeg}deg)`,
+          }}
         />
         <text
           className={cn(styles.boardText, styles.hand, styles.left)}
           x={CENTER_X - MESSAGE_BOARD_WIDTH + 10}
           y={HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.04}
           transform-origin={`${CENTER_X} ${HAND_ROTATE_Y}`}
+          style={{
+            animationName: rotateDeg === undefined ? undefined : "none",
+            transform:
+              rotateDeg === undefined
+                ? undefined
+                : `rotate(-${150 - rotateDeg}deg)`,
+          }}
         >
           {LEFT_BOARD_TEXT}
         </text>

@@ -51,4 +51,21 @@ button {
   margin: 20px 0;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: 18px;
+}
+
+.and {
+  font-family: fantasy;
 }
