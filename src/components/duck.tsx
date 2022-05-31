@@ -309,8 +309,10 @@ export const DuckComponent = ({
         />
         <text
           className={cn(styles.boardText, styles.hand)}
-          x={CENTER_X}
-          y={HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.04}
+          x={CENTER_X - 10 + MESSAGE_BOARD_WIDTH / 2}
+          y={HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.1}
+          textAnchor="middle"
+          dominantBaseline="middle"
           transform-origin={`${CENTER_X} ${HAND_ROTATE_Y}`}
           style={{
             animationName: rotateDeg === undefined ? undefined : "none",
@@ -374,8 +376,10 @@ export const DuckComponent = ({
         />
         <text
           className={cn(styles.boardText, styles.hand, styles.left)}
-          x={CENTER_X - MESSAGE_BOARD_WIDTH + 10}
-          y={HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.04}
+          x={CENTER_X - 10 - MESSAGE_BOARD_WIDTH / 2}
+          y={HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.1}
+          textAnchor="middle"
+          dominantBaseline="middle"
           transform-origin={`${CENTER_X} ${HAND_ROTATE_Y}`}
           style={{
             animationName: rotateDeg === undefined ? undefined : "none",
