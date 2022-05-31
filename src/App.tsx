@@ -2,13 +2,14 @@ import "./App.css";
 import { FloorComponent } from "./components/floor";
 import { useEffect, useRef, useState } from "react";
 import { toCanvas } from "html-to-image";
+import html2canvas from "html2canvas";
 import GIF from "gif.js";
 import gifWorkerUrl from "gif.js/dist/gif.worker.js?url";
 import { TextField, Button } from "@mui/material";
 
-const STEP = 5;
+const STEP = 8;
 const MAX_ROTATE_DEG = 150;
-const BIG_DELAY = 2000 * 0.35;
+const BIG_DELAY = 2000 * 0.55;
 const DELAY_STEP = (2000 * 0.3) / (150 / STEP);
 
 const downloadFileByBlob = (blob: Blob) => {
@@ -30,7 +31,7 @@ function App() {
 
   // 是否正在导出gif中
   const [exporting, setExporting] = useState(false);
-  const svgRef = useRef<SVGSVGElement>(null);
+  const svgRef = useRef<HTMLDivElement>(null);
   // 存每一帧的数组
   const [canvasList, setCanvasList] = useState<HTMLCanvasElement[]>([]);
   // 记录每一帧的旋转角度
@@ -39,15 +40,14 @@ function App() {
     if (!exporting || !svgRef.current) {
       return;
     }
-    toCanvas(svgRef.current as unknown as HTMLElement, {
+    html2canvas(svgRef.current as unknown as HTMLElement, {
       backgroundColor: "#fff",
+      allowTaint: true,
     }).then((canvas) => {
       canvasList.push(canvas);
       // 当到最后一个帧时，开始导出gif
-      if (rotateDeg === MAX_ROTATE_DEG) {
+      if (rotateDeg >= MAX_ROTATE_DEG) {
         const gif = new GIF({
-          width: 1100,
-          height: 650,
           workerScript: gifWorkerUrl,
         });
 
@@ -113,10 +113,12 @@ function App() {
             }}
           />
         </section>
-        <FloorComponent
-          leftBoardText={leftBoardText}
-          rightBoardText={rightBoardText}
-        />
+        <div className="center">
+          <FloorComponent
+            leftBoardText={leftBoardText}
+            rightBoardText={rightBoardText}
+          />
+        </div>
         <div
           style={{
             position: "absolute",
@@ -125,13 +127,26 @@ function App() {
             zIndex: -1,
           }}
         >
-          <FloorComponent
-            leftBoardText={leftBoardText}
-            rightBoardText={rightBoardText}
-            rotateDeg={rotateDeg}
+          <div
+            style={{
+              transform: "scale(1.1)",
+            }}
             ref={svgRef}
-          />
+          >
+            <FloorComponent
+              leftBoardText={leftBoardText}
+              rightBoardText={rightBoardText}
+              rotateDeg={rotateDeg}
+            />
+          </div>
         </div>
+        <a
+          target="__blank"
+          href="https://juejin.cn/post/7103950146668331044"
+          className="address"
+        >
+          掘金地址⬅️
+        </a>
       </section>
     </section>
   );

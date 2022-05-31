@@ -69,8 +69,8 @@ export const DuckComponent = ({
   const LEFT_BOARD_TEXT = leftBoardText;
   const RIGHT_BOARD_TEXT = rightBoardText;
 
-  const MESSAGE_BOARD_WIDTH = 300;
-  const MESSAGE_BOARD_HEIGHT = 150;
+  const MESSAGE_BOARD_WIDTH = 340;
+  const MESSAGE_BOARD_HEIGHT = 180;
   const MESSAGE_BOARD_COLOR = "#fff";
   const MESSAGE_BOARD_STROKE_COLOR = "#333";
 
@@ -295,7 +295,7 @@ export const DuckComponent = ({
         <rect
           width={MESSAGE_BOARD_WIDTH}
           height={MESSAGE_BOARD_HEIGHT}
-          x={CENTER_X - 10}
+          x={CENTER_X - 20}
           stroke={MESSAGE_BOARD_STROKE_COLOR}
           y={HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.6}
           fill={MESSAGE_BOARD_COLOR}
@@ -309,7 +309,7 @@ export const DuckComponent = ({
         />
         <text
           className={cn(styles.boardText, styles.hand)}
-          x={CENTER_X - 10 + MESSAGE_BOARD_WIDTH / 2}
+          x={CENTER_X - 20 + MESSAGE_BOARD_WIDTH / 2}
           y={HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.1}
           textAnchor="middle"
           dominantBaseline="middle"
@@ -360,7 +360,7 @@ export const DuckComponent = ({
         <rect
           width={MESSAGE_BOARD_WIDTH}
           height={MESSAGE_BOARD_HEIGHT}
-          x={CENTER_X - 10 - MESSAGE_BOARD_WIDTH}
+          x={CENTER_X + 20 - MESSAGE_BOARD_WIDTH}
           y={HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.6}
           fill={MESSAGE_BOARD_COLOR}
           stroke={MESSAGE_BOARD_STROKE_COLOR}
@@ -376,7 +376,7 @@ export const DuckComponent = ({
         />
         <text
           className={cn(styles.boardText, styles.hand, styles.left)}
-          x={CENTER_X - 10 - MESSAGE_BOARD_WIDTH / 2}
+          x={CENTER_X + 20 - MESSAGE_BOARD_WIDTH / 2}
           y={HAND_TOP - MESSAGE_BOARD_HEIGHT * 0.1}
           textAnchor="middle"
           dominantBaseline="middle"

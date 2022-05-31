@@ -50,6 +50,7 @@ button {
 .action-wrapper {
   margin: 20px 0;
   display: flex;
+  width: 400px;
   justify-content: space-around;
   align-items: center;
 }
@@ -68,4 +69,10 @@ button {
 
 .and {
   font-family: fantasy;
+}
+
+.address {
+  color: #1976d2;
+  text-decoration: none;
+  margin-top: 15px;
 }
